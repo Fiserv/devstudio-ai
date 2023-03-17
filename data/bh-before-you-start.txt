@@ -1,0 +1,108 @@
+Before You Start
+Note for Developers
+The current user journey enables developers to register for a trial plan that provides access to a range of Standard Bank Platform APIs on Banking Hub.
+
+Before you start integration, it is important to register on the Fiserv Developer Studio to test the Banking Hub APIs in the Sandbox environment. You may choose to test APIs using the Third-party API Testing Tools of your choice. However, registration is not required to learn about our APIs and reference documentation.
+
+Register on Fiserv Developer Studio
+This section describes the process to create an account and workspace on Fiserv Developer Studio to obtain credentials for sandbox testing.
+
+Creating an Account
+Perform the following steps to create an account on Fiserv Developer Studio:
+
+From the top-right corner of the screen, click Create account
+Populate the required fields and click Next
+Follow the instructions on the screen to set up your account
+Sign in to your Fiserv Developer Studio account once it is activated
+Creating a Banking Hub Workspace
+Workspaces are dedicated spaces for developers to obtain API key, API secret and product related details.
+
+Perform the following steps to create a workspace on Fiserv Developer Studio:
+
+Sign in to your Fiserv Developer Studio account
+
+From the top-right corner of the screen, click Workspaces. My Workspace page displays
+
+Note
+All previously created workspaces are listed on the My workspaces page.
+
+To create a new workspace, click the Add a new workspace button or click the Create a new workspace card. Create a workspace dialog box displays
+
+Enter workspace name and description
+
+From the Product drop-down list, select Banking Hub and click Create. A new workspace is created and three tabs of your workspace, namely Summary, Credentials and Settings are visible
+
+Note
+Currently, only one workspace can be created for Banking Hub. Also, the Trial Plan is available only for a shared Premier Sandbox Environment.
+
+image
+
+Every workspace has following three sections:
+
+Summary: Displays workspace details and list of activities performed on the workspace
+
+Credentials: Lists all active API keys. From this section, you can view or download the following details of an API key:
+
+Product name: Name of the product, for example, Banking Hub
+
+Org ID: Organization ID is required to send in all API requests under the Request Header
+
+API key name: Name of the API key
+
+API key type: Type of API key, for example, Trial
+
+API key: Alphanumeric value of the API key. API key is used as username while generating the access token
+
+API secret: Alphanumeric value of the API secret. API secret is used as password while generating the access token
+
+Host URL: Host URL path to send API requests
+
+image
+
+Settings: Used to modify or delete the workspace
+
+
+Generating Access Token
+An access token is used to authenticate your API build and allows you to use the Fiserv APIs securely. API key and API secret values obtained from the Workspace are required to generate an access token.
+
+Use the API mentioned below to generate an access token using Postman.
+
+URL
+POST https://cert.api.fiservapps.com/fts-apim/oauth2/v2 
+
+Headers
+Header Name	Description	Required
+Authorization	
+Base64 encoded string representing your username and password values, appended to the text Basic as follows:
+
+ Basic  
+
+Important: In Postman, use the Authorization tab to enter Username and Password values and set authentication type to Basic Auth. Use your API key as username and API secret as password.
+
+Required
+image
+
+Request Body
+From the Body tab, select the x-www-form-urlencoded radio button and enter the following key-value pair:
+
+grant_type = client_credentials
+
+image
+
+Response
+Field Name	Description	Type
+access_token	Generated access token value	string
+expires_in	
+Time in milliseconds until the generated token is valid.
+
+Note: Once generated, the access token is valid for approximately 15 minutes. You can reuse the access token until it expires.
+
+number
+token_type	Type of access token	string
+Sample Response
+
+{
+    "access_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjEiLCJwaS5hdG0iOiJhYXVxIn0.eyJzY29wZSI6IiIsImNsaWVudF9pZCI6ImdxNHpvZDB6Wng3NkVPTUtKQUlQUlJUZHJHOENWNGdJIiwiaXNzIjoiaHR0cHM6Ly9mZGMtZmVkc3NvLWNhdC5maXJzdGRhdGEuY29",
+    "expires_in": "899000",
+    "token_type": "Bearer"
+}
