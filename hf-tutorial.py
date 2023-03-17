@@ -19,4 +19,4 @@ tokenizer.train(files=paths, vocab_size=52_000, min_frequency=2, special_tokens=
 ])
 
 # Save files to disk
-tokenizer.save_model("./tokens", "bh-before-you-start-tokens.txt")
+tokenizer.save_model("./models", "bh-before-you-start")
