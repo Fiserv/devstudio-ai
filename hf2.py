@@ -1,10 +1,13 @@
+#! pip install tokenizers
+
+from tokenizers import ByteLevelBPETokenizer
 from tokenizers.implementations import ByteLevelBPETokenizer
 from tokenizers.processors import BertProcessing
 
 
 tokenizer = ByteLevelBPETokenizer(
     "./models/bh-before-you-start-vocab.json",
-    "./models/bh-before-you-start-/merges.txt",
+    "./models/bh-before-you-start-merges.txt",
 )
 tokenizer._tokenizer.post_processor = BertProcessing(
     ("</s>", tokenizer.token_to_id("</s>")),
