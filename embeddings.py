@@ -3,7 +3,8 @@ import pandas as pd
 import numpy as np
 import openai
 from openai.embeddings_utils import get_embedding, cosine_similarity
-
+import time
+start_time = time.time()
 """
 - make api call to openai => make it a function
 - take input for embedding
@@ -29,7 +30,7 @@ fvapac_api_input = "This service is used to activate the card after successful v
 
 search_query = "Can you do apple pay?"
 
-def search(df, product_description, n=3, pprint=True):
+def search(df, product_description):
     product_embedding = get_embedding(
         product_description,
         engine="text-embedding-ada-002"
@@ -38,14 +39,8 @@ def search(df, product_description, n=3, pprint=True):
 
     results = (
         df.sort_values("similarity", ascending=False)
-        .head(n)
-        .combined.str.replace("Title: ", "")
-        .str.replace("; Content:", ": ")
     )
-    if pprint:
-        for r in results:
-            print(r[:200])
-            print()
+
     return results
 
 def main():
@@ -55,15 +50,11 @@ def main():
         model="text-embedding-ada-002",
         input=[ch_doc_input, ch_api_input, bh_doc_input, bh_api_input, fvapac_doc_input, fvapac_api_input]
     )
-    
-    
-    print(embedding_results)
-
-    #df = pd.read_json(embedding_results)
-
-    res2 = search(df, 'How do I use apple pay?', n=3)
+    print(embedding_results) 
+    df = pd.DataFrame(data={'content': [ch_doc_input, ch_api_input, bh_doc_input, bh_api_input, fvapac_doc_input, fvapac_api_input], 'embedding': map(lambda x: x['embedding'], embedding_results['data']) })
+    print(df)
+    res2 = search(df, search_query)
     print(res2)
-
 
     # datafile_path = "data/data.csv"
 
@@ -72,6 +63,11 @@ def main():
     
     # res1 = search(df, 'delicious beans', n=3)
     # print(res1)
+
+    print("My program took", time.time() - start_time, "to run")
+
+
+    # print(df)
 
 if __name__ == "__main__":
     main()

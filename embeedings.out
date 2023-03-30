@@ -1,11 +1,20 @@
 Hello OpenAI Embeddings!
-Good Buy:  I liked the beans. They were vacuum sealed, plump and moist. Would recommend them for any use. I personally split and stuck them in some vodka to make vanilla extract. Yum!
+                                             content                                          embedding
+0  Apple Pay is a digital wallet platform and onl...  [-0.011258862912654877, -0.008440915495157242,...
+1  Use this payload to originate a financial tran...  [-0.02254088595509529, -0.006110262591391802, ...
+2  Fiserv core account processing solutions provi...  [-0.013663895428180695, 0.008585458621382713, ...
+3                           /cardservice/cards/cards  [-0.025212842971086502, 0.009496559388935566, ...
+4  The final step is to get the newly activated c...  [-0.0019636352080851793, -0.016484335064888, -...
+5  This service is used to activate the card afte...  [-0.019675983116030693, -0.004691965412348509,...
+content
+embedding
+similarity
+                                             content  ... similarity
+0  Apple Pay is a digital wallet platform and onl...  ...   0.860822
+4  The final step is to get the newly activated c...  ...   0.812917
+3                           /cardservice/cards/cards  ...   0.747799
+5  This service is used to activate the card afte...  ...   0.747292
+2  Fiserv core account processing solutions provi...  ...   0.722984
+1  Use this payload to originate a financial tran...  ...   0.709405
 
-Jamaican Blue beans:  Excellent coffee bean for roasting. Our family just purchased another 5 pounds for more roasting. Plenty of flavor and mild on acidity when roasted to a dark brown bean and befor
-
-Delicious!:  I enjoy this white beans seasoning, it gives a rich flavor to the beans I just love it, my mother in law didn't know about this Zatarain's brand and now she is traying different seasoning
-
-612    Good Buy:  I liked the beans. They were vacuum...
-547    Jamaican Blue beans:  Excellent coffee bean fo...
-264    Delicious!:  I enjoy this white beans seasonin...
-Name: combined, dtype: object
+[6 rows x 3 columns]
