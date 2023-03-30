@@ -5,11 +5,26 @@ import openai
 from openai.embeddings_utils import get_embedding, cosine_similarity
 import time
 start_time = time.time()
+
 """
+TODO
 - make api call to openai => make it a function
 - take input for embedding
 - stub fuction to read from elastic to compare embedding
 - return results.  with link to markdown / api explorer
+
+- read from vector database, redis
+- fine-tune ada wiht prompt
+- recommendations
+- code search 
+- setup library for openai call & logging
+- setup snapshot for out testing for now
+
+- tania
+- github actions:  do diff and full embeddings
+- control program for batching
+- read from elastic?
+- save into redis
 """
 
 openai.organization = "org-VCfNuxZVxCD6rYF47bMOBxls"
