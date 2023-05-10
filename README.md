@@ -1,6 +1,6 @@
 # devstudio-ai
 
-Hello
+Hello from devStudio AI!!
 
 use python3
 
